@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Luke McConnell">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Expense Tracker</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="expense_list.js"></script>
+
+    </head>
+<body>
+    <header>
+        <h1 class="title"> Expense $$ Tracker </h1>
+    </header>
+    <hr>
+    <div class="expense-form">
+        <h2>Add New Expense:</h2>
+        <label class="expense-name-label" for="expense-date" >Date: </label>
+        <input type="date" class="expense-date" id="expense-date" onkeypress="submitWithReturn(event)">
+        <label class="expense-name-label" for="expense-amount" >Amount: </label>
+        <input type="text" class="expense-amount" id="expense-amount" onfocus="this.value=''" value="Enter a Valid Number Here" onkeypress="submitWithReturn(event)">
+        
+        <label class="expense-name-label" for="expense-name-text" >Name: </label>
+        <input type="text" class="expense-name-text" id="expense-name-text" onfocus="this.value=''" value="Enter Expense Name Here" onkeypress="submitWithReturn(event)">
+        
+        <input type="submit" class="submit-expense-button" onclick="getExpense();document.getElementById('expense-name-text-Box').value = '';">
+    </div>
+    <hr>
+    <div class="expense-list-entries">
+        <h3>List of Expenses:</h3><hr><hr>
+        <ul id="expense-List">
+        </ul>
+        <hr>
+        <button class="export-expense-list-button" type="button" onclick="exportTodoList()">Download List of Expenses</button><br>
+        <button class="clear-expense-list-button" type="button" onclick="clearTodoList()">Clear All</button>
+    </div>
+    
+        
+        
+
+
+</body>
+</html>

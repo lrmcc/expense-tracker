@@ -1,0 +1,119 @@
+body {
+	margin:10%;
+	padding:10px;
+  height:100%;
+  background-color: rgb(67, 67, 107);
+  border-color: rgb(34, 38, 44);
+  border-width: 5px;
+  border-style: dashed;
+  border-radius: 10%;
+  text-align: center;
+}
+
+.title{
+  background-color: rgb(158, 177, 206);
+  color: rgb(34, 38, 44);
+  font-family: Georgia, serif;
+  font-size: xx-large;
+  text-align: center;
+  border-color: rgb(34, 38, 44);
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 40%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+h2{
+  font-size: xx-large;
+}
+ul{
+  list-style-type: lower-greek;
+  text-align: left;
+}
+hr{
+  border: 5px solid  rgb(34, 38, 44);
+  border-radius: 5px;
+}
+.expense-name-text {
+  padding: 8px;
+  border: 2px solid rgb(50, 53, 58);;
+  border-radius:10px;
+  width: 20%;
+}
+.expense-date {
+  padding: 8px;
+  border: 2px solid rgb(50, 53, 58);;
+  border-radius:10px;
+  width: 14%;
+}
+.expense-amount {
+  padding: 8px;
+  border: 2px solid rgb(50, 53, 58);;
+  border-radius:10px;
+  width: 18%;
+}
+
+.expense-form{
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: rgb(158, 177, 206);
+  color: rgb(34, 38, 44);
+  border-color: rgb(34, 38, 44);
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 10px;
+}
+.expense-name-label{
+  font-size: x-large;
+}
+
+.expense-list-entries{
+    background-color: rgb(158, 177, 206);
+    color: rgb(34, 38, 44);
+    margin-left: 40%;
+    margin-right: 40%;
+    padding-top: 10px;
+    border-color: rgb(34, 38, 44);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+button{
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.submit-expense-button{
+  background:  rgb(126, 160, 211);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: large;
+  padding: 4px;
+  margin-left: 6px;
+}
+.clear-expense-item-from-list-button{
+    background: rgb(255, 1, 1);
+    float: right;
+  }
+
+.expense-list-item-done-button{
+    background: #9090a3;
+    float: right;
+    
+}
+
+.export-expense-list-button{
+    background: #8986d9;
+    margin-bottom: 5%;
+    font-size: medium;
+}
+
+.clear-expense-list-button{
+    background: rgb(202, 60, 60);
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+ 
