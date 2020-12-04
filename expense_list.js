@@ -1,10 +1,9 @@
 let entryCount = 1;
 let entries = [];
-let dates = [];
-let amounts = [];
 
 let done = "<button type='button' class='expense-list-item-done-button' id=" + entryCount +" onclick='expenseListItemDone(" + entryCount + ")'>Done</button>"
 let clearItem = "<button type='button' class='clear-expense-item-from-list-button' id=" + entryCount +" onclick='clearExpenseItemFromList(" + entryCount + ")'>x</button>";
+let listItemString = ["<li onclick='expenseListItemDone(this)' id=","</li><hr>"];
 
 function submitWithReturn(event) {
     if (event.keyCode === 13) {
@@ -12,17 +11,21 @@ function submitWithReturn(event) {
        }
   }
 function getExpense(){
-    let expenseItem = document.getElementById("expense-name-text").value;
-    entries.push(expenseItem);
-    putExpense(expenseItem);
+    let expenseName = document.getElementById("expense-name-text").value;
+    let expenseAmount = document.getElementById("expense-amount").value;
+    let expenseDate = document.getElementById("expense-date").value;
+    let expenseTuple = [expenseName, expenseAmount, expenseDate];
+    entries.push(expenseTuple);
+    putExpense(expenseTuple);
     let input = document.getElementById("expense-name-text");
     input.value = "";
 } 
 
-function putExpense(expenseItem){
+function putExpense(expenseTuple){
     entryCount = entries.length;
-    var completelist = document.getElementById("expense-List");
-    completelist.innerHTML += "<li onclick='expenseListItemDone(this)' id=" + entryCount +">" + entryCount +". " + expenseItem + clearItem + done + "</li><hr>";
+    console.log("Entry Count: " + entryCount);
+    var completelist = document.getElementById("expense-list");
+    completelist.innerHTML +=  listItemString[0] + entryCount +">" + "Date:" + expenseTuple[2] +" Name: " + expenseTuple[0] + " Amount: " + expenseTuple[1] + clearItem + done + listItemString[1];
 } 
 
 function expenseListItemDone(item) {
@@ -47,11 +50,11 @@ function exportExpenseList(){
 
 function clearExpenseItemFromList(itemEntryCount){
     entries = entries.filter(a => a !== entries[itemEntryCount-1]);
-    var completelist = document.getElementById("expense-List");
+    var completelist = document.getElementById("expense-list");
     completelist.innerHTML = ""
     entryCount = 1;
     for (let i = 0; i < entries.length; i++){
-        completelist.innerHTML += "<li onclick='expenseListItemDone(this)' id=" + entryCount +">" + entryCount +". " + entries[i] + clearItem + done + "</li><hr>";
+        completelist.innerHTML += listItemString[0] + entryCount +">" + "Date:" + entries[i][2] +" Name: " + entries[i][0] + " Amount: " + entries[i][1] + clearItem + done + listItemString[1];
         entryCount++;
     }
 }
@@ -59,7 +62,7 @@ function clearExpenseItemFromList(itemEntryCount){
 function clearExpenseList(){
     let choice = confirm("Are you sure you want to clear the list?");
     if (choice){
-        var completelist = document.getElementById("expense-List");
+        var completelist = document.getElementById("expense-list");
         entries = [];
         entryCount = 0;
         completelist.innerHTML = "";
