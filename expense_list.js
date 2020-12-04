@@ -3,7 +3,8 @@ let entries = [];
 
 let done = "<button type='button' class='expense-list-item-done-button' id=" + entryCount +" onclick='expenseListItemDone(" + entryCount + ")'>Done</button>"
 let clearItem = "<button type='button' class='clear-expense-item-from-list-button' id=" + entryCount +" onclick='clearExpenseItemFromList(" + entryCount + ")'>x</button>";
-let listItemString = ["<li onclick='expenseListItemDone(this)' id=","</li><hr>"];
+let listItemString = ["<tr onclick='expenseListItemDone(this)' id=","</tr>"];
+let defaultTable = "<tr><th>Name</th><th>Date</th><th>Amount</th><th>Actions</th></tr><tr><td>No Entries!</td><th>yyyy-mm-dd</th><td>$0</td><td></td></tr><tr></tr><tr></tr>";
 
 function submitWithReturn(event) {
     if (event.keyCode === 13) {
@@ -12,9 +13,9 @@ function submitWithReturn(event) {
   }
 function getExpense(){
     let expenseName = document.getElementById("expense-name-text").value;
-    let expenseAmount = document.getElementById("expense-amount").value;
     let expenseDate = document.getElementById("expense-date").value;
-    let expenseTuple = [expenseName, expenseAmount, expenseDate];
+    let expenseAmount = document.getElementById("expense-amount").value;
+    let expenseTuple = [expenseName, expenseDate, expenseAmount];
     entries.push(expenseTuple);
     putExpense(expenseTuple);
     let input = document.getElementById("expense-name-text");
@@ -25,7 +26,7 @@ function putExpense(expenseTuple){
     entryCount = entries.length;
     console.log("Entry Count: " + entryCount);
     var completelist = document.getElementById("expense-list");
-    completelist.innerHTML +=  listItemString[0] + entryCount +">" + "Date:" + expenseTuple[2] +" Name: " + expenseTuple[0] + " Amount: " + expenseTuple[1] + clearItem + done + listItemString[1];
+    completelist.innerHTML +=  listItemString[0] + entryCount +"><td>"  + expenseTuple[0] + "</td><td>" + expenseTuple[1]+ "</td><td>$" + expenseTuple[2] + "</td><td>" + clearItem + done +"</td>" + listItemString[1];
 } 
 
 function expenseListItemDone(item) {
@@ -38,23 +39,15 @@ function expenseListItemDone(item) {
     
   }
 
-function exportExpenseList(){
-    let csvContent = "data:text/csv;charset=utf-8," + entries.toString();
-    var encodedUri = encodeURI(csvContent);
-    var link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "expense_data.csv");
-    document.body.appendChild(link);
-    link.click(); 
-}
+
 
 function clearExpenseItemFromList(itemEntryCount){
     entries = entries.filter(a => a !== entries[itemEntryCount-1]);
     var completelist = document.getElementById("expense-list");
-    completelist.innerHTML = ""
+    completelist.innerHTML = defaultTable;
     entryCount = 1;
     for (let i = 0; i < entries.length; i++){
-        completelist.innerHTML += listItemString[0] + entryCount +">" + "Date:" + entries[i][2] +" Name: " + entries[i][0] + " Amount: " + entries[i][1] + clearItem + done + listItemString[1];
+        completelist.innerHTML += listItemString[0] + entryCount +"><td>"  + entries[i][0] + "</td><td>" + entries[i][1]+ "</td><td>$" + entries[i][2] + "</td><td>" + clearItem + done +"</td>" + listItemString[1];
         entryCount++;
     }
 }
@@ -65,8 +58,16 @@ function clearExpenseList(){
         var completelist = document.getElementById("expense-list");
         entries = [];
         entryCount = 0;
-        completelist.innerHTML = "";
+        completelist.innerHTML = defaultTable;
     }
     
 }
-
+function exportExpenseList(){
+    let csvContent = "data:text/csv;charset=utf-8," + entries.toString();
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "expense_data.csv");
+    document.body.appendChild(link);
+    link.click(); 
+}
