@@ -1,16 +1,16 @@
 let entryCount = 1;
 let entries = [];
 
-let done = "<button type='button' class='expense-list-item-done-button' id=" + entryCount +" onclick='expenseListItemDone(" + entryCount + ")'>Done</button>"
-let clearItem = "<button type='button' class='clear-expense-item-from-list-button' id=" + entryCount +" onclick='clearExpenseItemFromList(" + entryCount + ")'>x</button>";
 let listItemString = ["<tr onclick='expenseListItemDone(this)' id=","</tr>"];
-let defaultTable = "<tr><th>Name</th><th>Date</th><th>Amount</th><th>Actions</th></tr><tr><td>No Entries!</td><th>yyyy-mm-dd</th><td>$0</td><td></td></tr><tr></tr><tr></tr>";
+let emptyTable = "<tr><th>Name</th><th>Date</th><th>Amount</th><th>Actions</th></tr>"
+let defaultTable = emptyTable + "<tr><td>No Entries!</td><th>yyyy-mm-dd</th><td>$0</td><td></td></tr><tr></tr><tr></tr>";
 
 function submitWithReturn(event) {
     if (event.keyCode === 13) {
         getExpense();
        }
   }
+
 function getExpense(){
     let expenseName = document.getElementById("expense-name-text").value;
     let expenseDate = document.getElementById("expense-date").value;
@@ -26,7 +26,11 @@ function putExpense(expenseTuple){
     entryCount = entries.length;
     console.log("Entry Count: " + entryCount);
     var completelist = document.getElementById("expense-list");
-    completelist.innerHTML +=  listItemString[0] + entryCount +"><td>"  + expenseTuple[0] + "</td><td>" + expenseTuple[1]+ "</td><td>$" + expenseTuple[2] + "</td><td>" + clearItem + done +"</td>" + listItemString[1];
+    if (entryCount === 1){
+        completelist.innerHTML = emptyTable;
+    }
+    completelist.innerHTML +=  listItemString[0] + entryCount +"><td>"  + expenseTuple[0] + "</td><td>" + expenseTuple[1]+ "</td><td>$" + expenseTuple[2] + "</td><td>" + getClearItem(entryCount) + getDoneItem(entryCount) +"</td>" + listItemString[1];
+    console.log("clear Item: " + getClearItem(entryCount));
 } 
 
 function expenseListItemDone(item) {
@@ -39,15 +43,23 @@ function expenseListItemDone(item) {
     
   }
 
+function getClearItem(count){
+    return "<button type='button' class='clear-expense-item-from-list-button' id=" + entryCount +" onclick='clearExpenseItemFromList(" + entryCount + ")'>x</button>";
+}
 
+function getDoneItem(count){
+    return "<button type='button' class='expense-list-item-done-button' id=" + entryCount +" onclick='expenseListItemDone(" + entryCount + ")'>Done</button>"
+}
 
 function clearExpenseItemFromList(itemEntryCount){
+    console.log("target item count is: " + itemEntryCount);
     entries = entries.filter(a => a !== entries[itemEntryCount-1]);
+    console.log(entries);
     var completelist = document.getElementById("expense-list");
-    completelist.innerHTML = defaultTable;
+    completelist.innerHTML = emptyTable;
     entryCount = 1;
     for (let i = 0; i < entries.length; i++){
-        completelist.innerHTML += listItemString[0] + entryCount +"><td>"  + entries[i][0] + "</td><td>" + entries[i][1]+ "</td><td>$" + entries[i][2] + "</td><td>" + clearItem + done +"</td>" + listItemString[1];
+        completelist.innerHTML += listItemString[0] + entryCount +"><td>"  + entries[i][0] + "</td><td>" + entries[i][1]+ "</td><td>$" + entries[i][2] + "</td><td>" + getClearItem(entryCount) + getDoneItem(entryCount) +"</td>" + listItemString[1];
         entryCount++;
     }
 }
