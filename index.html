@@ -17,20 +17,18 @@
     <header>
         <h1 class="title"> Expense $$ Tracker </h1>
     </header>
-    <hr>
     <div class="expense-form">
         <h2>Add New Expense:</h2>
         <label class="expense-name-label" for="expense-name-text" >Name: </label>
-        <input type="text" class="expense-name-text" id="expense-name-text" onfocus="this.value=''" value="Enter Expense Name">
+        <input type="text" class="expense-name-text" id="expense-name-text" onfocus="this.value=''" value="Enter Expense Name"><br>
         <label class="expense-name-label" for="expense-date" >Date: </label>
         <input type="date" class="expense-date" id="expense-date" >
         <label class="expense-name-label" for="expense-amount" >Amount: </label>
-        <input type="text" class="expense-amount" id="expense-amount" onfocus="this.value=''" value="Enter Numerical Value" onkeypress="submitWithReturn(event)">
+        <input type="text" class="expense-amount" id="expense-amount" onfocus="this.value=''" value="Enter Numerical Value" onkeypress="submitWithReturn(event)"><br>
         <input type="submit" class="submit-expense-button" onclick="getExpense();document.getElementById('expense-name-text').value='Enter Expense Name';document.getElementById('expense-date').value='';document.getElementById('expense-amount').value='Enter Numerical Value';">
     </div>
-    <hr>
     <div class="expense-list-entries">
-        <h3>List of Expenses:</h3><hr><hr>
+        <h2>List of Expenses:</h2>
         <table id="expense-list">
             <tr>
               <th>Name</th>
@@ -49,9 +47,8 @@
             <tr>
             </tr>
           </table>
-        <hr>
-        <button class="export-expense-list-button" type="button" onclick="exportExpenseList()">Download List of Expenses</button><br>
-        <button class="clear-expense-list-button" type="button" onclick="clearExpenseList()">Clear All</button>
+        <button class="export-expense-list-button" type="button" onclick="exportExpenseList()">Download</button><br>
+        <button class="clear-expense-list-button" type="button" onclick="clearExpenseList()">Clear</button>
     </div>
     
         

@@ -62,6 +62,10 @@ function clearExpenseItemFromList(itemEntryCount){
         completelist.innerHTML += listItemString[0] + entryCount +"><td>"  + entries[i][0] + "</td><td>" + entries[i][1]+ "</td><td>$" + entries[i][2] + "</td><td>" + getClearItem(entryCount) + getDoneItem(entryCount) +"</td>" + listItemString[1];
         entryCount++;
     }
+    entryCount = entries.length;
+    if (entryCount === 0){
+        completelist.innerHTML = defaultTable;
+    }
 }
 
 function clearExpenseList(){
