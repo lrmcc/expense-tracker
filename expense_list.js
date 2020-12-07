@@ -15,8 +15,7 @@ function getExpense(){
         clearExpenseInput();}
     else{
         alert("Try Again: Invalid 'Amount' Entry");
-    }
-    
+    }  
 } 
 
 function putExpense(expenseTuple){
@@ -75,12 +74,10 @@ function clearExpenseTable(){
         entryCount = 0;
         expenseTable.innerHTML = defaultTable;
     }
-    
 }
+
 function checkAmount(expenseAmount){
-    let isnum = /^\d+$/.test(expenseAmount);
-    console.log(isnum);
-    return (isnum)
+    return ( /^\d+$/.test(expenseAmount))
 }
 
 function submitWithReturn(event) {
@@ -88,17 +85,10 @@ function submitWithReturn(event) {
         getExpense();
        }
   }
+
 function clearExpenseInput(){
     let nameInput = document.getElementById("expense-name-text");
-    console.log("nameInput: " + nameInput);
-    let numberInput = document.getElementById("expense-amount");
-    console.log("numberInput: " + numberInput);
-    let dateInput = document.getElementById("expense-date");
-    console.log("dateInput: " + dateInput);
     nameInput.value = "";
-    numberInput = "";
-    dateInput = "";
-
 }
 
 function getClearItemButton(count){
