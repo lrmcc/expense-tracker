@@ -11,7 +11,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <script src="expense_list.js"></script>
-
     </head>
 <body>
     <header>
@@ -25,11 +24,11 @@
         <input type="date" class="expense-date" id="expense-date" >
         <label class="expense-name-label" for="expense-amount" >Amount: </label>
         <input type="text" class="expense-amount" id="expense-amount" onfocus="this.value=''" value="Enter Numerical Value" onkeypress="submitWithReturn(event)"><br>
-        <input type="submit" class="submit-expense-button" onclick="getExpense();document.getElementById('expense-name-text').value='Enter Expense Name';document.getElementById('expense-date').value='';document.getElementById('expense-amount').value='Enter Numerical Value';">
+        <input type="submit" class="submit-expense-button" onclick="getExpense();">
     </div>
-    <div class="expense-list-entries">
-        <h2>List of Expenses:</h2>
-        <table id="expense-list">
+    <div class="expense-table-entries">
+        <h2>Table of Expenses:</h2>
+        <table id="expense-table">
             <tr>
               <th>Name</th>
               <th>Date</th>
@@ -38,22 +37,13 @@
             </tr>
             <tr>
               <td>No Entries!</td>
-              <th>yyyy-mm-dd</th>
+              <td>yyyy-mm-dd</td>
               <td>$0</td>
               <td></td>
             </tr>
-            <tr>
-            </tr>
-            <tr>
-            </tr>
           </table>
-        <button class="export-expense-list-button" type="button" onclick="exportExpenseList()">Download</button><br>
-        <button class="clear-expense-list-button" type="button" onclick="clearExpenseList()">Clear</button>
+        <button class="export-expense-table-button" type="button" onclick="exportExpenseTable()">Download</button><br>
+        <button class="clear-expense-table-button" type="button" onclick="clearExpenseTable()">Clear</button>
     </div>
-    
-        
-        
-
-
 </body>
 </html>

@@ -85,7 +85,7 @@ ul{
   font-size: x-large;
 }
 
-.expense-list-entries{
+.expense-table-entries{
     background-color: rgb(158, 177, 206);
     color: rgb(34, 38, 44);
     margin-left: 10%;
@@ -115,18 +115,12 @@ button{
   margin-top: 3%;
   margin-bottom: 3%;
 }
-.clear-expense-item-from-list-button{
+.clear-expense-item-from-table-button{
     background: #B00020;
     float: right;
   }
 
-.expense-list-item-done-button{
-    background: #9090a3;
-    float: right;
-    
-}
-
-.export-expense-list-button{
+.export-expense-table-button{
     background: #6200EE;
     margin-top: 3%;
     font-size: large;
@@ -139,7 +133,7 @@ button{
     margin-top: 3%;
 }
 
-.clear-expense-list-button{
+.clear-expense-table-button{
     background: #B00020;
     margin-top: 3%;
     margin-bottom: 3%;
